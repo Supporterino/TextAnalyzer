@@ -11,6 +11,8 @@ def clean_up():
     print(":: Removing old files")
     files = [
         os.getcwd() + "/reports/NumberOfSentences.txt",
+        os.getcwd() + "/reports/WordsPerSentence.txt",
+        os.getcwd() + "/reports/AverageWordsPerSentence.txt",
     ]
 
     for file in files:

@@ -10,3 +10,5 @@ if __name__ == '__main__':
     sentences = load_sentences_from_file(FILE_TO_ANALYZE)
     analyzer = Analyzer(sentences)
     analyzer.get_number_of_sentences()
+    analyzer.get_number_of_words_per_sentence()
+    analyzer.get_average_words_per_sentence()
