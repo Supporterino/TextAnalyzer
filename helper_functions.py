@@ -7,12 +7,14 @@ def write_file(filepath, data):
     print(":: Written File {}".format(filepath))
 
 
-def clean_up():
+def clean_up(path):
     print(":: Removing old files")
     files = [
-        os.getcwd() + "/reports/NumberOfSentences.txt",
-        os.getcwd() + "/reports/WordsPerSentence.txt",
-        os.getcwd() + "/reports/AverageWordsPerSentence.txt",
+        path + "/NumberOfSentences.txt",
+        path + "/WordsPerSentence.txt",
+        path + "/AverageWordsPerSentence.txt",
+        path + "/WarningTooLongSentences.txt",
+        path + "/UsageOfWords.txt",
     ]
 
     for file in files:
