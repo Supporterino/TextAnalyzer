@@ -43,7 +43,7 @@ This report gives you a number which represents the average words used per sente
 
 ### Duplicates
 
-This report gives you the words which appear to frequently [see config](). The information given is the position of the words first occurrence and the distance from its first position to the reappearance.
+This report gives you the words which appear to frequently [see config](https://github.com/Supporterino/TextAnalyzer#config). The information given is the position of the words first occurrence and the distance from its first position to the reappearance.
 
 ### Number of sentences
 
@@ -55,4 +55,4 @@ Gives a list with all words sorted by their usage. All words are lower case and 
 
 ### Warning for too long sentences
 
-Gives a list of sentences which passed the threshold [see config]().
+Gives a list of sentences which passed the threshold [see config](https://github.com/Supporterino/TextAnalyzer#config).
