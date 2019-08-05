@@ -2,8 +2,14 @@
 
 This is a text analyzer to get statistics from your text.
 
+## Information
+
++ Python > 3.5 is required to run the analyzer
++ Files have to be encoded in UTF-8
 
 ## config
+
+### skript config
 
 ```python
 ...
@@ -21,8 +27,11 @@ You can configure the following options:
 + `FILE_TO_ANALYZE` takes the path to your txt file with your text in it. Expected is a file named text.txt inside the `input` directory
 + `WARNING_THRESHOLD` is the lenght of sentences before they get recognized by the too long feature
 + `WORD_GAP` is the threshold in which words should be searched for duplicates
-+ `PREFIX` is the name of the directory inside to `
++ `PREFIX` is the name of the directory inside the `reports` folder
 
+### file config
+
+Inside the `config` folder is the `ignoreList.txt`. All words inside this file will be ignored during the duplicate check. Each word must be separated by a new line.
 
 ## Features
 
