@@ -1,17 +1,20 @@
 from helper_functions import write_file, clean_up
 import os
 import collections
+import re
 
 
 class Analyzer:
-    def __init__(self, data, threshold, prefix):
+    def __init__(self, data, threshold, prefix, word_gap):
         self.amount_of_sentences = 0
         self.words_per_sentence = []
         self.avg_words_per_sentence = 0
         self.usage_of_words = {}
         self.data = data
         self.threshold = threshold
+        self.word_gap = word_gap
         self.output_path = self.create_reports_directory(prefix)
+        self.ignore_list = self.init_ignore_list()
         clean_up(self.output_path)
 
     def run_analyses(self):
@@ -20,6 +23,15 @@ class Analyzer:
         self.get_average_words_per_sentence()
         self.gen_warning_for_too_long_sentences()
         self.get_word_usage()
+        self.get_double_words()
+
+    @staticmethod
+    def init_ignore_list():
+        with open(os.getcwd() + "/config/ignoreList.txt", "r") as input:
+            ignore_list = input.readlines()
+        for i in range(len(ignore_list)):
+            ignore_list[i] = ignore_list[i].replace('\n', '').strip()
+        return ignore_list
 
     @staticmethod
     def create_reports_directory(prefix):
@@ -70,5 +82,22 @@ class Analyzer:
         words = []
         for sentence in self.data:
             for word in sentence.split(" "):
-                words.append(word.strip().lower().replace(',', '').replace('.', ''))
+                words.append(re.sub("\.(?!\d)", '', word.strip().lower().replace(',', '').replace('"', '').replace('„', '').replace('“', '')))
         return words
+
+    def get_double_words(self):
+        doubles = []
+        fileoutput = "Duplicate words with distance of {0}\n\n".format(self.word_gap)
+        words = self.create_word_map()
+        for x in range(len(words)):
+            if not words[x] in self.ignore_list:
+                for i in range(1, self.word_gap):
+                    if i + x < len(words):
+                        if words[x + i] == words[x]:
+                            doubles.append("Duplicate at word({0}): '{1}' with distance of {2}\n".format(str(x), words[x], str(i)))
+                    else:
+                        break
+        for j in doubles:
+            fileoutput += j
+        write_file(self.output_path + "/Duplicates.txt", fileoutput)
+

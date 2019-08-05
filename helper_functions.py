@@ -2,7 +2,7 @@ import os
 
 
 def write_file(filepath, data):
-    with open(filepath, "w+") as output:
+    with open(filepath, "w+", encoding="utf-8") as output:
         output.writelines(data)
     print(":: Written File {}".format(filepath))
 
@@ -15,6 +15,7 @@ def clean_up(path):
         path + "/AverageWordsPerSentence.txt",
         path + "/WarningTooLongSentences.txt",
         path + "/UsageOfWords.txt",
+        path + "/Duplicates.txt",
     ]
 
     for file in files:
