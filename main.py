@@ -1,7 +1,7 @@
 import os
 from lib.input_parser import load_sentences_from_file
 from lib.analyzer import Analyzer
-from lib.printer import Grapher
+from lib.grapher import Grapher
 
 FILE_TO_ANALYZE = os.getcwd() + "/samples/debug.txt"
 WARNING_THRESHOLD = 20
