@@ -9,6 +9,7 @@ class Analyzer:
         self.amount_of_sentences = 0
         self.words_per_sentence = []
         self.avg_words_per_sentence = 0
+        self.duplicates = 0
         self.usage_of_words = {}
         self.data = data
         self.threshold = threshold
@@ -95,6 +96,7 @@ class Analyzer:
                     if i + x < len(words):
                         if words[x + i] == words[x]:
                             doubles.append("Duplicate at word({0}): '{1}' with distance of {2}\n".format(str(x), words[x], str(i)))
+                            self.duplicates += 1
                     else:
                         break
         for j in doubles:

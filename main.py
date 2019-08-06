@@ -15,4 +15,4 @@ if __name__ == '__main__':
     analyzer = Analyzer(sentences, WARNING_THRESHOLD, PREFIX, WORD_GAP)
     analyzer.run_analyses()
     grapher = Grapher(analyzer)
-    grapher.demo_plot()
+    grapher.run_all()
