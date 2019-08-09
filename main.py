@@ -1,7 +1,7 @@
 import os
 from lib.input_parser import load_sentences_from_file
 from lib.analyzer import Analyzer
-from lib.printer import Grapher
+from lib.grapher import Grapher
 
 FILE_TO_ANALYZE = os.getcwd() + "/samples/debug.txt"
 WARNING_THRESHOLD = 20
@@ -15,4 +15,4 @@ if __name__ == '__main__':
     analyzer = Analyzer(sentences, WARNING_THRESHOLD, PREFIX, WORD_GAP)
     analyzer.run_analyses()
     grapher = Grapher(analyzer)
-    grapher.demo_plot()
+    grapher.run_all()
